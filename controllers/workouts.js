@@ -51,7 +51,12 @@ router.post("/", (req, res) => {
 
 
 //E
-
+router.get("/:id/edit", async(req, res) => {
+    const editWorkout = await Workout.findById(req.params.id)
+    res.render("workouts/edit.ejs", {
+        workout: editWorkout
+    })
+})
 
 
 //S
