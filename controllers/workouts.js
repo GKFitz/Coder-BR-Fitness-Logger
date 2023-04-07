@@ -39,7 +39,13 @@ router.delete("/:id", async(req, res) => {
 
 
 //U
-
+router.put("/:id", async(req, res) => {
+    await Workout.findByIdAndUpdate(
+        req.params.id,
+        req.body
+    )
+    res.redirect('/workouts');
+})
 
 
 //C
@@ -51,6 +57,7 @@ router.post("/", (req, res) => {
 
 
 //E
+//localhost:3000/workouts/id/edit
 router.get("/:id/edit", async(req, res) => {
     const editWorkout = await Workout.findById(req.params.id)
     res.render("edit.ejs", {
