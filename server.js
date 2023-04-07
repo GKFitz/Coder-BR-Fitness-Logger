@@ -17,7 +17,9 @@ db.on('disconnected', () => console.log('mongo disconnected'));
 //MiddleWares
 app.use(express.urlencoded({ extended: false }));
 app.use(methodOverride('_method'));
-
+//MiddleWare Controllers for authors
+const workoutController = require('./controllers/workouts')
+app.use('/workouts', workoutController)
 
 
 //I
