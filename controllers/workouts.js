@@ -32,7 +32,10 @@ router.get("/new", (req, res) => {
 
 
 //D
-
+router.delete("/:id", async(req, res) => {
+    await Workout.findByIdAndDelete(req.params.id)
+    res.redirect("/workouts");
+})
 
 
 //U
