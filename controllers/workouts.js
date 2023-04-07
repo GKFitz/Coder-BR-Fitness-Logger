@@ -40,6 +40,7 @@ router.get("/new", (req, res) => {
 
 
 //C
+//localhost:3000/workouts/
 router.post("/", (req, res) => {
     const createdWorkout = new Workout(req.body)
     createdWorkout.save().then(res.redirect("/workouts"))
@@ -51,6 +52,7 @@ router.post("/", (req, res) => {
 
 
 //S
+//localhost:3000/workouts/:id
 router.get("/:id", async(req, res) => {
     const foundWorkout = await Workout.findById(req.params.id).exec()
     res.render("show.ejs", {
