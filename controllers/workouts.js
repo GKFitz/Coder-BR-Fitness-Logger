@@ -12,7 +12,9 @@ router.get("/", async(req, res) => {
 
 
 //N
-
+router.get("/new", (req, res) => {
+    res.render("workouts/new.ejs")
+})
 
 
 //D
@@ -24,7 +26,10 @@ router.get("/", async(req, res) => {
 
 
 //C
-
+router.post("/", (req, res) => {
+    const createdWorkout = new Workout(req.body)
+    createdWorkout.save().then(res.redirect("/workouts"))
+})
 
 
 //E
