@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<title>Express Blog</title>
+</head>
+
+<body>
+	<header>
+	
+		<nav>
+			<ul>
+				<li>
+					<a href="/">Home</a>
+				</li>
+				<li>
+					<a href="/workouts">Workouts Index</a>
+				</li>
+			</ul>
+		</nav>
+	</header>
+	<main>
+		<h2>Edit Workout:</h2>
+		<form action="/workouts/<%= workout._id %>?_method=PUT" method="POST">
+            <label for="type">Type:</label>
+			<input type="text" name="type" value="<%= workout.type %>" /><br />
+            <label for="duration">Duration:</label>
+            <input type="number" name="duration" value="<%= workout.duration %>"/><br/>
+            <label for="distance">Distance:</label>
+            <input type="number" name="distance" value="<%= workout.distance %>"/><br/>
+			
+			<input type="submit" value="Update Workout" />
+		</form>
+	</main>
+</body>
+
+</html>
