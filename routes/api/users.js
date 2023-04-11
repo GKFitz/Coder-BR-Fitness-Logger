@@ -1,7 +1,9 @@
-const User = require("../../models/user.js")
+// const User = require("../../models/user.js")
 const usersRouter = require("express").Router();
 const usersControllers = require("../../controllers/usersController.js");
 const workoutsControllers = require("../../controllers/workoutsController.js");
+const db = require("../../models");
+
 
 //localhost:3000/signup
 usersRouter.route('/signup').post((req, res) =>{
