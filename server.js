@@ -28,7 +28,7 @@ const workoutsController = require('./controllers/workoutsController.js')
 app.use('/workouts', workoutsController)
 // controller for users
 const usersController = require('./controllers/usersController.js')
-app.use('/workouts', usersController)
+app.use('/users', usersController)
 
 //I
 // app.get("/", (req, res) => {

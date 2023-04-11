@@ -15,7 +15,7 @@ const db = require("../models");
 // })
 
 module.exports = {
-    find: function(req, res) {
+    findAll: function(req, res) {
     db.Workout
         .find(req.query)
         .sort({ date: -1 })
@@ -41,7 +41,7 @@ module.exports = {
 
     create: function(req, res) {
         console.log(req.body)
-        console.log("attempting create wokout in db")
+        console.log("attempting create workout in db")
         db.Workout
         .create(req.body)
         .then(dbWorkout => {
