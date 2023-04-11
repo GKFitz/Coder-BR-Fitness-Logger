@@ -1,7 +1,9 @@
-const express = require('express');
+const db = require("../models");
+
+// const express = require('express');
 // const mongoose = require('mongoose')
-const workoutRouter = express.Router();
-const Workout = require('../models/workout.js');
+// const workoutRouter = express.Router();
+// const Workout = require('../models/workout.js');
 
 // const workoutArr = require('../workoutArr')
 
@@ -12,68 +14,125 @@ const Workout = require('../models/workout.js');
 //     res.redirect('/workouts')
 // })
 
+module.exports = {
+    find: function(req, res) {
+    db.Workout
+        .find(req.query)
+        .sort({ date: -1 })
+        .then(dbModel => res.json(dbModel))
+        .catch(err => res.status(422).json(err));
+    },
 
-//I 
-//localhost:3000/workouts/
-workoutRouter.get("/", async(req, res) => {
-    const allWorkouts = await Workout.find({})
-    console.log(allWorkouts)
-    res.render("index.ejs", {
-        workouts: allWorkouts
-    })
-})
+    // findByToday: function(req, res) {
+    //     db.Workout
+    //       .find({ date: req.body.date })
+    //       .sort({ date: -1 })
+    //       .then(dbModel => res.json(dbModel))
+    //       .catch(err => res.status(422).json(err));
+    //   },
 
+    findById: function(req, res) {
+        console.log(req.params.id)
+        db.Show
+          .findById(req.params.id)
+          .then(dbModel => res.json(dbModel))
+          .catch(err => res.status(422).json(err));
+    },
 
-//N
-//localhost:3000/workouts/new
-workoutRouter.get("/new", (req, res) => {
-    res.render("new.ejs")
-})
-
-
-//D
-workoutRouter.delete("/:id", async(req, res) => {
-    await Workout.findByIdAndDelete(req.params.id)
-    res.redirect("/workouts");
-})
-
-
-//U
-workoutRouter.put("/:id", async(req, res) => {
-    await Workout.findByIdAndUpdate(
-        req.params.id,
-        req.body
-    )
-    res.redirect('/workouts');
-})
-
-
-//C
-//localhost:3000/workouts/
-workoutRouter.post("/", (req, res) => {
-    const createdWorkout = new Workout(req.body)
-    createdWorkout.save().then(res.redirect("/workouts"))
-})
-
-
-//E
-//localhost:3000/workouts/id/edit
-workoutRouter.get("/:id/edit", async(req, res) => {
-    const editWorkout = await Workout.findById(req.params.id)
-    res.render("edit.ejs", {
-        workout: editWorkout
-    })
-})
+    create: function(req, res) {
+        console.log(req.body)
+        console.log("attempting create wokout in db")
+        db.Workout
+        .create(req.body)
+        .then(dbWorkout => {
+          console.log(dbWorkout)
+          console.log("attempting to add workout to the account holder")
+            db.User.findOneAndUpdate({ email: req.user.email}, {$push:  {shows: dbWorkout._id }}, { new: true })
+            .then(dbModel => {
+              console.log(dbModel)
+              console.log("=================")
+  
+              res.json(dbModel)
+            })
+            
+          })
+          .catch(err => res.status(422).json(err));
+      },
 
 
-//S
-//localhost:3000/workouts/:id
-workoutRouter.get("/:id", async(req, res) => {
-    const foundWorkout = await Workout.findById(req.params.id).exec()
-    res.render("show.ejs", {
-        workout: foundWorkout
-    })
-})
+}
 
 
-module.exports = workoutRouter;
+
+
+
+
+
+
+
+
+
+// //I 
+// //localhost:3000/workouts/
+// workoutRouter.get("/", async(req, res) => {
+//     const allWorkouts = await Workout.find({})
+//     console.log(allWorkouts)
+//     res.render("index.ejs", {
+//         workouts: allWorkouts
+//     })
+// })
+
+
+// //N
+// //localhost:3000/workouts/new
+// workoutRouter.get("/new", (req, res) => {
+//     res.render("new.ejs")
+// })
+
+
+// //D
+// workoutRouter.delete("/:id", async(req, res) => {
+//     await Workout.findByIdAndDelete(req.params.id)
+//     res.redirect("/workouts");
+// })
+
+
+// //U
+// workoutRouter.put("/:id", async(req, res) => {
+//     await Workout.findByIdAndUpdate(
+//         req.params.id,
+//         req.body
+//     )
+//     res.redirect('/workouts');
+// })
+
+
+// //C
+// //localhost:3000/workouts/
+// workoutRouter.post("/", (req, res) => {
+//     const createdWorkout = new Workout(req.body)
+//     createdWorkout.save().then(res.redirect("/workouts"))
+// })
+
+
+// //E
+// //localhost:3000/workouts/id/edit
+// workoutRouter.get("/:id/edit", async(req, res) => {
+//     const editWorkout = await Workout.findById(req.params.id)
+//     res.render("edit.ejs", {
+//         workout: editWorkout
+//     })
+// })
+
+
+// //S
+// //localhost:3000/workouts/:id
+// workoutRouter.get("/:id", async(req, res) => {
+//     const foundWorkout = await Workout.findById(req.params.id).exec()
+//     res.render("show.ejs", {
+//         workout: foundWorkout
+//     })
+// })
+
+
+// module.exports = workoutRouter;
