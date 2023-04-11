@@ -21,10 +21,19 @@ usersRouter.route('/').get((req, res) => {
     )
 })
 
-usersRouter.route('/delete/:id').delete()
+usersRouter.route('/delete/:id').delete((req, res) => {
+    User.deleteOne({_id: req.params.id})
+    .then(success => res.json('Success! Iser deleted.'))
+    .catch(err => res.status(400).json('Error!' + err))
+})
 
 
-usersRouter.route('/update/:id').put()
+usersRouter.route('/update/:id').put((req, res) => {
+    User.findByIdAndUpdate(req.params.id, req.body)
+    .then(success => res.json('Success! Iser deleted.'))
+    .catch(err => res.status(400).json('Error!' + err))
+    
+})
 
 
 module.exports = usersRouter
