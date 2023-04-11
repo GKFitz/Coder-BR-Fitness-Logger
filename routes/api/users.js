@@ -14,7 +14,12 @@ usersRouter.route('/new').post((req, res) =>{
 })
 
 
-usersRouter.route('/').get()
+usersRouter.route('/').get((req, res) => {
+    User.find(
+        .then(allUsers => res.json(allUsers))
+        .catch(err => res.status(400).json("Error!" + err))
+    )
+})
 
 usersRouter.route('/delete/:id').delete()
 
