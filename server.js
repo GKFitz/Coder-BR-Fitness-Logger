@@ -4,9 +4,13 @@ const mongoose = require('mongoose')
 const methodOverride= require('method-override')
 require('dotenv').config()
 const User = require("./models/user.js")
+const path require('path')
+const bodyParser = require('body-parser');
 const app = express()
+const routes = require('./routes')
 
 
+//seeds
 const workoutArr = require('./workoutArr')
 
 
@@ -22,6 +26,7 @@ db.on('disconnected', () => console.log('mongo disconnected'));
 
 //MiddleWares
 app.use(express.urlencoded({ extended: true }));
+app.use(express.json());
 app.use(methodOverride('_method'));
 //MiddleWare Controllers for workouts
 const workoutsController = require('./controllers/workoutsController.js')
@@ -30,11 +35,12 @@ app.use('/workouts', workoutsController)
 const usersController = require('./controllers/usersController.js')
 app.use('/users', usersController)
 
-//I
-// app.get("/", (req, res) => {
-//     console.log('server up')
-//     res.render('index.ejs')
-// })
+app.use('/', routes);
+
+
+
+
+
 
 const PORT = process.env.PORT;
 app.listen(PORT, () => {
