@@ -47,7 +47,7 @@ module.exports = {
         .then(dbWorkout => {
           console.log(dbWorkout)
           console.log("attempting to add workout to the account holder")
-            db.User.findOneAndUpdate({ email: req.user.email}, {$push:  {shows: dbWorkout._id }}, { new: true })
+            db.User.findOneAndUpdate({ email: req.user.email}, {$push:  {workouts: dbWorkout._id }}, { new: true })
             .then(dbModel => {
               console.log(dbModel)
               console.log("=================")
@@ -55,10 +55,24 @@ module.exports = {
               res.json(dbModel)
             })
             
-          })
-          .catch(err => res.status(422).json(err));
-      },
+        })
+        .catch(err => res.status(422).json(err));
+    },
 
+    update: function(req, res) {
+        db.Workout
+          .findOneAndUpdate({ _id: req.params.id }, req.body)
+          .then(dbModel => res.json(dbModel))
+          .catch(err => res.status(422).json(err));
+    },
+
+    remove: function(req, res) {
+        db.Workout
+          .findById({ _id: req.params.id })
+          .then(dbModel => dbModel.remove())
+          .then(dbModel => res.json(dbModel))
+          .catch(err => res.status(422).json(err));
+      }
 
 }
 
