@@ -1,10 +1,10 @@
 const User = require("../../models/user.js")
 const usersRouter = require("express").Router();
 const usersControllers = require("../../controllers/usersController.js");
+const workoutsControllers = require("../../controllers/workoutsController.js");
 
-
-
-usersRouter.route('/new').post((req, res) =>{
+//localhost:3000/signup
+usersRouter.route('/signup').post((req, res) =>{
     const newUser = new User(req.body)
 
     newUser.save()
@@ -12,9 +12,18 @@ usersRouter.route('/new').post((req, res) =>{
     .catch(err =>res.status(400).json("Error!"))
 
 })
+//localhost:3000/login
+usersRouter.route('/login').post((req, res) =>{
+    .get(userController.findById)
+    .post(userController.login);
+
+})
+
+//localhost: 3000/my-workouts
+// usersRouter.route("/my-workouts")
 
 
-usersRouter.route('/').get((req, res) => {
+usersRouter.route('/').get((req, res, next) => {
     User.find(
         .then(allUsers => res.json(allUsers))
         .catch(err => res.status(400).json("Error!" + err))
