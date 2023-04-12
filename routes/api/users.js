@@ -2,7 +2,7 @@ const express = require('express')
 const usersRouter = require("express").Router();
 const usersControllers = require("../../controllers/usersControllers");
 //const workoutsControllers = require("../../controllers/workoutsController.js");
-const db = require("../../models");
+// const db = require("../../models");
 
 
 
@@ -32,7 +32,7 @@ usersRouter.post('/login', usersControllers.login)
 //     .post(userController.login);
 
 // })
-
+userRouter.delete("/", usersControllers.logout)
 
 
 module.exports = usersRouter
