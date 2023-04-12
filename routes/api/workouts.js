@@ -1,6 +1,6 @@
 const workoutsRouter = require('express').Router()
 const workoutsController = require("../../controllers/workoutsController");
-const db = require("../../models");
+// const db = require("../../models");
 
 
 //I for INDEX
@@ -9,7 +9,7 @@ workoutsRouter.get('/allWorkouts', workoutsController.getAllWorkouts)
 
 //N for New
 //localhost:3000/
-workoutsRouter.get('/myWorkouts', workoutsController.createWorkout)
+workoutsRouter.get('/new', workoutsController.newWorkout)
 
 //D for DELETE
 //localhost:3000/myWorkout/:id

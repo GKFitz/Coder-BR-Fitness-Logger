@@ -7,4 +7,8 @@ const userRoutes = require('./users.js')
 router.use('/workouts', workoutRoutes);
 router.use('/users', userRoutes);
 
+router.get('/', function(req, res) {
+    res.render('index');
+});
+
 module.exports = router;

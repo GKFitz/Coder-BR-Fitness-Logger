@@ -3,12 +3,13 @@ const session = require('express-session')
 const mongoose = require('mongoose')
 const methodOverride= require('method-override')
 require('dotenv').config()
-const User = require("./models/user.js")
+// const User = require("./models/user.js")
+const modeldb = require('./models')
 const path = require('path')
 const bodyParser = require('body-parser');
 const app = express()
 const routes = require('./routes')
-
+const router = require('express').Router()
 
 //seeds
 const workoutArr = require('./workoutArr')
@@ -33,7 +34,8 @@ app.use(
     session({
         secret: process.env.SECRET,
         resave: false,
-        saveUninitialized: false
+        saveUninitialized: false,
+        keepSessionInfo: true
     })
 );
 
@@ -50,7 +52,7 @@ app.get('/any', (req, res) => {
 // app.use('/users', usersController)
 
 //routes
-// app.use(router)
+app.use(router)
 app.use('/', routes);
 
 

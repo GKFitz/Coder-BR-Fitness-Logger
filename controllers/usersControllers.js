@@ -6,11 +6,15 @@ const db = require('../models')
 module.exports = {
 
     createAcct: function(req, res) {
-        console.log("===========================")
         console.log(req.body)
+        req.body.password = bcrypt.hashSync(req.body.password, bcrypt.genSaltSync(10));
         User.create(req.body)
-        .then(dbModel => res.json(dbModel))
-        .catch(err => res.status(422).json(err));
+            .then(dbModel => res.json(dbModel))
+            .catch(err => res.status(422).json(err));
+    
+       
+        
+        res.redirect('/')
     },
 
     login: function(req, res){

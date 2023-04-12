@@ -5,6 +5,9 @@ const usersControllers = require("../../controllers/usersControllers");
 const db = require("../../models");
 
 
+
+// usersRouter.get('/new', )
+
 //localhost:3000/signup
 usersRouter.post('/signup', usersControllers.createAcct)
     // const newUser = new User(req.body)
@@ -13,9 +16,14 @@ usersRouter.post('/signup', usersControllers.createAcct)
     // .then(user => res.json(user))
     // .catch(err =>res.status(400).json("Error!"))
 
-// })
+
 //localhost:3000/login
 usersRouter.post('/login', usersControllers.login)
+
+//conditional that determines whther a current user is signed in
+// if (no user)
+    //return no
+//else(run controller function)
 //     .get(userController.findById)
 //     .post(userController.login);
 
