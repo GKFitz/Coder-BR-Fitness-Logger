@@ -1,4 +1,4 @@
-const db = require("../models");
+// const db = require("../models");
 const Workout = require("../models/workout.js")
 
 // const express = require('express');

@@ -6,7 +6,11 @@ const db = require("../../models");
 
 
 
-// usersRouter.get('/new', )
+
+// New (registration page)
+userRouter.get('/new', usersControllers.signUp)
+// New (login page)
+usersRouter.get('/new', usersControllers.loginPage)
 
 //localhost:3000/signup
 usersRouter.post('/signup', usersControllers.createAcct)
