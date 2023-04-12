@@ -12,18 +12,16 @@ function loginPage (req, res){
     res.render('users/new.ejs', {currentUser: req.session.currentUser});
 });
 
-//New 
+//Create (register account) Route with password hashing
 function createAcct (req, res) {
     console.log(req.body)
+    //overwrite the user password with the hashed password then pass to our database
     req.body.password = bcrypt.hashSync(req.body.password, bcrypt.genSaltSync(10));
-    User.create(req.body)
-        .then(dbModel => res.json(dbModel))
-        .catch(err => res.status(422).json(err));
-    
-       
-        
+    User.create(req.body, (error, createdUser) => {
         res.redirect('/')
-    },
+    })
+})
+    
 
     login: function(req, res){
         // console.log(req.body.email)
