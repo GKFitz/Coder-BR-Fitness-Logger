@@ -15,10 +15,7 @@ const workoutSchema = new Schema({
     type: Number, 
     required: true,
   },
-  workouts: {
-    type: mongoose.Schema.Types.ObjectId,
-    ref: 'User'
-  }
+  
 
   
 });

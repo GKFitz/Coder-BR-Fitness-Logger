@@ -4,7 +4,7 @@ const mongoose = require('mongoose')
 const methodOverride= require('method-override')
 require('dotenv').config()
 const User = require("./models/user.js")
-const path require('path')
+const path = require('path')
 const bodyParser = require('body-parser');
 const app = express()
 const routes = require('./routes')
@@ -29,12 +29,14 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 app.use(methodOverride('_method'));
 //MiddleWare Controllers for workouts
-const workoutsController = require('./controllers/workoutsController.js')
-app.use('/workouts', workoutsController)
+// const workoutsController = require('./controllers/workoutsController.js')
+// app.use('/workouts', workoutsController)
 // controller for users
-const usersController = require('./controllers/usersController.js')
-app.use('/users', usersController)
+// const usersController = require('./controllers/usersController.js')
+// app.use('/users', usersController)
 
+//routes
+app.use(router)
 app.use('/', routes);
 
 
