@@ -5,6 +5,7 @@ const User = require('../models/user.js');
 
 
 //New SignUp part of the Landing Page
+//since index is where we want to land, get rid of 'new route?
 function signUp(req, res) {
     res.render('users/new.ejs', { currentUser: req.session.currentUser});
 };
@@ -14,7 +15,10 @@ function loginPage (req, res){
 };
 
 //Delete logout function
-
+function logout (req, res){
+    req.session.destroy()
+    res.redirect("/")
+}
 
 
 
@@ -91,6 +95,7 @@ module.exports = {
     loginPage,
     createAcct,
     login,
+    logout,
 
 
 }
