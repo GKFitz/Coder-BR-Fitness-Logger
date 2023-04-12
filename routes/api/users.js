@@ -8,7 +8,7 @@ const usersControllers = require("../../controllers/usersControllers");
 
 
 // New (registration page)
-userRouter.get('/new', usersControllers.signUp)
+usersRouter.get('/new', usersControllers.signUp)
 // New (login page)
 usersRouter.get('/new', usersControllers.loginPage)
 
@@ -32,7 +32,7 @@ usersRouter.post('/login', usersControllers.login)
 //     .post(userController.login);
 
 // })
-userRouter.delete("/", usersControllers.logout)
+// usersRouter.delete("/", usersControllers.logout)
 
 
 module.exports = usersRouter
