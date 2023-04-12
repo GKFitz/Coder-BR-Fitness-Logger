@@ -39,44 +39,44 @@ module.exports = {
         });
     
     },
-    getAllWorkouts: function(req, res) {
-        db.User
-        .find(req.query)
-        .sort({ date: -1 })
-        .then(dbModel => res.json(dbModel))
-        .catch(err => res.status(422).json(err));
-    },
+    // getAllWorkouts: function(req, res) {
+    //     db.User
+    //     .find(req.query)
+    //     .sort({ date: -1 })
+    //     .then(dbModel => res.json(dbModel))
+    //     .catch(err => res.status(422).json(err));
+    // },
 
 
-    createWorkout: function(req,res) {
-    const createdWorkout = new Workout(req.body)
+    // createWorkout: function(req,res) {
+    // const createdWorkout = new Workout(req.body)
     //     createdWorkout.save().then(res.redirect("/workouts"))
-    }
+    // }
 
 
 
-    removeWorkout: function(req, res) {
-        db.User
-        .findById({ _id: req.params.id })
-        .then(dbModel => dbModel.remove())
-        .then(dbModel => res.json(dbModel))
-        .catch(err => res.status(422).json(err));
-    }
+    // removeWorkout: function(req, res) {
+    //     db.User
+    //     .findById({ _id: req.params.id })
+    //     .then(dbModel => dbModel.remove())
+    //     .then(dbModel => res.json(dbModel))
+    //     .catch(err => res.status(422).json(err));
+    // }
 
-    updateWorkout: function(req, res) {
-        db.User
-        .findOneAndUpdate({ _id: req.params.id }, req.body)
-        .then(dbModel => res.json(dbModel))
-        .catch(err => res.status(422).json(err));
-    },
+    // updateWorkout: function(req, res) {
+    //     db.User
+    //     .findOneAndUpdate({ _id: req.params.id }, req.body)
+    //     .then(dbModel => res.json(dbModel))
+    //     .catch(err => res.status(422).json(err));
+    // },
 
-    editWorkout: function (req, res) {
-    workoutRouter.get("/:id/edit", async(req, res) => {
-        //     const editWorkout = await Workout.findById(req.params.id)
-        //     res.render("edit.ejs", {
-        //         workout: editWorkout
-        //     })
-    })
+    // editWorkout: function (req, res) {
+    // workoutRouter.get("/:id/edit", async(req, res) => {
+    //     //     const editWorkout = await Workout.findById(req.params.id)
+    //     //     res.render("edit.ejs", {
+    //     //         workout: editWorkout
+    //     //     })
+    // })
         
 
 

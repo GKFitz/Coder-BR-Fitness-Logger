@@ -1,6 +1,6 @@
 const router = require("express").Router();
-const workoutRoutes = require('./workouts');
-const userRoutes = require('./users')
+const workoutRoutes = require('./workouts.js');
+const userRoutes = require('./users.js')
 
 
 

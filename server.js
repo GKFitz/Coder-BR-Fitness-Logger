@@ -28,6 +28,20 @@ db.on('disconnected', () => console.log('mongo disconnected'));
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 app.use(methodOverride('_method'));
+
+app.use(
+    session({
+        secret: process.env.SECRET,
+        resave: false,
+        saveUninitialized: false
+    })
+);
+
+// Routes / Controllers
+app.get('/any', (req, res) => {
+    req.session.anyProperty = 'any value';
+    res.send('This is the route that sets the value of req.session.anyProperty');
+});
 //MiddleWare Controllers for workouts
 // const workoutsController = require('./controllers/workoutsController.js')
 // app.use('/workouts', workoutsController)
@@ -37,7 +51,7 @@ app.use(methodOverride('_method'));
 
 //routes
 app.use(router)
-app.use('/', routes);
+// app.use('/', routes);
 
 
 
