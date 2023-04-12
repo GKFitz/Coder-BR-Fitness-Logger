@@ -55,15 +55,29 @@ module.exports = {
         .then(dbModel => dbModel.remove())
         .then(dbModel => res.json(dbModel))
         .catch(err => res.status(422).json(err));
-    }
+    },
 
-    // updateWorkout: function(req, res) {
-    //     db.User
-    //     .findOneAndUpdate({ _id: req.params.id }, req.body)
-    //     .then(dbModel => res.json(dbModel))
-    //     .catch(err => res.status(422).json(err));
-    // },
+    updateWorkout: function(req, res) {
+        db.Workout
+        .findOneAndUpdate({ _id: req.params.id }, req.body)
+        .then(dbModel => res.json(dbModel))
+        .catch(err => res.status(422).json(err));
+    },
 
+    editWorkout: function(req, res) {
+        db.Workout
+        .findById(req.params.id)
+        .then(dbModel => res.json(dbModel))
+        .catch(err => res.status(422).json(err));
+    },
+
+    showWorkout: function(req, res) {
+        db.Workout
+        .findById({ _id: req.params.id })
+        .then(dbModel => dbModel.remove())
+        .then(dbModel => res.json(dbModel))
+        .catch(err => res.status(422).json(err));
+    },
     // editWorkout: function (req, res) {
     // workoutRouter.get("/:id/edit", async(req, res) => {
     //     //     const editWorkout = await Workout.findById(req.params.id)

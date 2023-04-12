@@ -50,8 +50,8 @@ app.get('/any', (req, res) => {
 // app.use('/users', usersController)
 
 //routes
-app.use(router)
-// app.use('/', routes);
+// app.use(router)
+app.use('/', routes);
 
 
 

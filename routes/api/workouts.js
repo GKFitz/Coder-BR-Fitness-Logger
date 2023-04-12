@@ -1,5 +1,7 @@
 const workoutsRouter = require('express').Router()
 const workoutsController = require("../../controllers/workoutsController");
+const db = require("../../models");
+
 
 //I for INDEX
 //localhost:3000/allWorkouts

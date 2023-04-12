@@ -1,7 +1,7 @@
-// const User = require("../../models/user.js")
+const express = require('express')
 const usersRouter = require("express").Router();
-const usersControllers = require("../../controllers/usersController.js");
-// const workoutsControllers = require("../../controllers/workoutsController.js");
+const usersControllers = require("../../controllers/usersControllers");
+//const workoutsControllers = require("../../controllers/workoutsController.js");
 const db = require("../../models");
 
 
