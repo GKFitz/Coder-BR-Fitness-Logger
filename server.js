@@ -8,8 +8,8 @@ const modeldb = require('./models')
 const path = require('path')
 const bodyParser = require('body-parser');
 const app = express()
-const routes = require('./routes')
-const router = require('express').Router()
+const workoutRouter = require('./routes/api/workouts.js')
+const userRouter = require("./routes/api/users.js")
 
 //seeds
 const workoutArr = require('./workoutArr')
@@ -38,12 +38,17 @@ app.use(
         keepSessionInfo: true
     })
 );
-
-// Routes / Controllers
-app.get('/any', (req, res) => {
-    req.session.anyProperty = 'any value';
-    res.send('This is the route that sets the value of req.session.anyProperty');
-});
+// // Routes / Controllers
+// app.get('/', (req, res) => {
+// 	res.render('index.ejs', {
+//         currentUser: req.session.currentUser
+//     });
+// });
+// // Routes / Controllers
+// app.get('/any', (req, res) => {
+//     req.session.anyProperty = 'any value';
+//     res.send('This is the route that sets the value of req.session.anyProperty');
+// });
 //MiddleWare Controllers for workouts
 // const workoutsController = require('./controllers/workoutsController.js')
 // app.use('/workouts', workoutsController)
@@ -52,9 +57,10 @@ app.get('/any', (req, res) => {
 // app.use('/users', usersController)
 
 //routes
-app.use(router)
-app.use('/', routes);
-
+//app.use(router)
+//
+app.use('/workouts', workoutRouter);
+app.use('/', userRouter);
 
 
 

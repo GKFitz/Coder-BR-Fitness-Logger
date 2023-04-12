@@ -4,14 +4,21 @@ const User = require('../models/user.js');
 // const db = require('../models')
 
 
+
+function sessionPage(req, res){
+    res.render('loginNew.ejs')
+}
+
+
+
 //New SignUp part of the Landing Page
 //since index is where we want to land, get rid of 'new route?
 function signUp(req, res) {
-    res.render('users/new.ejs', { currentUser: req.session.currentUser});
+    res.render('index.ejs', { currentUser: req.session.currentUser});
 };
 //New login part of the Landing page
 function loginPage (req, res){
-    res.render('users/new.ejs', {currentUser: req.session.currentUser});
+    res.render('index.ejs', {currentUser: req.session.currentUser});
 };
 
 //Delete logout function
@@ -27,9 +34,10 @@ function createAcct (req, res) {
     console.log(req.body)
     //overwrite the user password with the hashed password then pass to our database
     req.body.password = bcrypt.hashSync(req.body.password, bcrypt.genSaltSync(10));
-    User.create(req.body, (error, createdUser) => {
-        res.redirect('/')
-    })
+    const createdUser = User.create(req.body)
+    createdUser.then(res.redirect("/"))
+        
+    
 }
     
 
@@ -57,16 +65,15 @@ function createAcct (req, res) {
 //         });
     
 //     },
-//Create Login function
-function login (req, res) {
+//Get Login function
+async function login (req, res) {
     // Check for an existing user
-    User.findOne( {
-        email: req.body.email
-    }, (error, foundUser) => {
-    // Send error if no user is found
+    const findUser = await User.findOne( {email: req.body.email})
     if (!findUser) {
         res.send(`Oops! No user with that email address has been registered.`)
     } else {
+        console.log(req.body.password)
+        console.log(findUser.password)
         // If a user has been found
         // compare the given password with the hashed password we have stored
         const pwMatches = bcrypt.compareSync(req.body.password, findUser.password)
@@ -75,7 +82,9 @@ function login (req, res) {
             // add the user to our session
             req.session.currentUser = findUser
                 //  redirect back to our home page
-                res.redirect('/')
+                res.render('index.ejs', {
+                    login : findUser
+                })
             } else {
                 // if the passwords don't match
                 res.send('Oops! Invalid credentials.');
@@ -83,14 +92,14 @@ function login (req, res) {
     
         }
     
-    })
-
+        
 }
     
         
 
 
 module.exports = {
+    sessionPage,
     signUp,
     loginPage,
     createAcct,

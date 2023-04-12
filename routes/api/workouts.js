@@ -4,21 +4,21 @@ const workoutsController = require("../../controllers/workoutsController");
 
 
 //I for INDEX
-//localhost:3000/allWorkouts
+//localhost:3000/workouts/allWorkouts
 workoutsRouter.get('/allWorkouts', workoutsController.getAllWorkouts)
 
 //N for New
-//localhost:3000/
+//localhost:3000/workouts/new
 workoutsRouter.get('/new', workoutsController.newWorkout)
 
 //D for DELETE
-//localhost:3000/myWorkout/:id
+//localhost:3000/workouts/myWorkout/:id
 workoutsRouter.delete('/myWorkouts/:id', workoutsController.deleteWorkout)
     
 
 
 //U for UPDATE
-//localhost:3000/update/:id
+//localhost:3000/workouts/update/:id
 workoutsRouter.put('/update/:id', workoutsController.updateWorkout)
 
 
@@ -28,7 +28,7 @@ workoutsRouter.put('/update/:id', workoutsController.updateWorkout)
 // })
 
 //C for CREATE new workout
-//localhost:3000/
+//localhost:3000/workouts
 workoutsRouter.post('/', workoutsController.createWorkout)
 
 //E for EDIT 
@@ -37,7 +37,7 @@ workoutsRouter.get("/:id/edit", workoutsController.editWorkout)
     
 
 //S for show getOne
-//localhost:3000/:id
+//localhost:3000/workouts/:id
 workoutsRouter.get('/:id', workoutsController.showWorkout )
 
 
