@@ -16,7 +16,7 @@
                     <a href="/">Home</a>
                 </li>
                 <li>
-                    <a href="/login">signin/login</a>
+                    
                 </li>
             </ul>
         </nav>
@@ -24,8 +24,13 @@
     <main>
         <h2></h2>
         <ul>
-            
+            <% for(let i =0; i < workouts.length; i++){ %>
+                <li>
+                    <a href="/workouts/<%= workouts[i]._id%>"><%= workouts[i].type %></a>
+                </li>
+            <% } %>
         </ul>
     </main>
+    <a href="/workouts/new">Add Your Workout!</a>
 </body>
 </html>

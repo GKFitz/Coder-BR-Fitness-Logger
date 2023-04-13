@@ -19,8 +19,9 @@ const Workout = require("../models/workout.js")
     //Index 
     //Get all route
     function getAllWorkouts (req, res) {
-       Workout.find({}, function(err, workout) {
-        res.render('/getAllWorkouts', { workouts: allWorkouts});
+       Workout.find({})
+       .then( function(workout) {
+        res.render('index.ejs', { workouts: workout});
        });
        
     
@@ -47,12 +48,9 @@ const Workout = require("../models/workout.js")
     //C
     //post route to create a new workout
     function createWorkout (req,res) {
-        new Workout.findById(req.params.id, function (err, workout) {
-            workout.push(req.body);
-            workout.save(function (err) {
-              res.redirect(`/workouts/${workouts._id}`);
-            });
-        });
+        Workout.create(req.body)
+        .then(res.redirect('/workouts'));
+            
     }
     // const createdWorkout = new Workout(req.body)
     // console.log(req.body)
@@ -78,17 +76,16 @@ const Workout = require("../models/workout.js")
     //E for edit
     async function editWorkout (req, res) {
         await Workout.findById(req.params.id)
-        findById(req.params.id)
         res.render("edit.ejs", { workout: editWorkout})
         
     }
 
     //S show 
     async function showWorkout(req, res) {
-        await Workout.findById(req.params.id, function (err, workout) {
-        res.render("show.ejs", { workout: foundWorkout })
+        await Workout.findById(req.params.id).exec()
+        res.render("show.ejs", { workout: showWorkout})
           
-        });
+        
     }
     
 

@@ -5,7 +5,9 @@ const workoutsController = require("../../controllers/workoutsController");
 
 //I for INDEX
 //localhost:3000/workouts/allWorkouts
-workoutsRouter.get('/allWorkouts', workoutsController.getAllWorkouts)
+workoutsRouter.get('/', workoutsController.getAllWorkouts)
+
+
 
 //N for New
 //localhost:3000/workouts/new
@@ -15,6 +17,10 @@ workoutsRouter.get('/new', workoutsController.newWorkout)
 //localhost:3000/workouts/myWorkout/:id
 workoutsRouter.delete('/myWorkouts/:id', workoutsController.deleteWorkout)
     
+//User.deleteOne({_id: req.params.id})
+//     .then(success => res.json('Success! User deleted.'))
+//     .catch(err => res.status(400).json('Error!' + err))
+// })
 
 
 //U for UPDATE
@@ -22,10 +28,7 @@ workoutsRouter.delete('/myWorkouts/:id', workoutsController.deleteWorkout)
 workoutsRouter.put('/update/:id', workoutsController.updateWorkout)
 
 
-//     User.deleteOne({_id: req.params.id})
-//     .then(success => res.json('Success! User deleted.'))
-//     .catch(err => res.status(400).json('Error!' + err))
-// })
+
 
 //C for CREATE new workout
 //localhost:3000/workouts

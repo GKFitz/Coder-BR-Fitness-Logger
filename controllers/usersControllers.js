@@ -82,12 +82,12 @@ async function login (req, res) {
             // add the user to our session
             req.session.currentUser = findUser
                 //  redirect back to our home page
-                res.render('index.ejs', {
-                    login : findUser
-                })
+                res.redirect('/workouts')
+                    
+                
             } else {
                 // if the passwords don't match
-                res.send('Oops! Invalid credentials.');
+                res.send('Invalid credentials.');
             }
     
         }
