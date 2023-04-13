@@ -15,7 +15,7 @@ workoutsRouter.get('/new', workoutsController.newWorkout)
 
 //D for DELETE
 //localhost:3000/workouts/myWorkout/:id
-workoutsRouter.delete('/myWorkouts/:id', workoutsController.deleteWorkout)
+workoutsRouter.delete('/:id', workoutsController.deleteWorkout)
     
 //User.deleteOne({_id: req.params.id})
 //     .then(success => res.json('Success! User deleted.'))
@@ -25,7 +25,7 @@ workoutsRouter.delete('/myWorkouts/:id', workoutsController.deleteWorkout)
 
 //U for UPDATE
 //localhost:3000/workouts/update/:id
-workoutsRouter.put('/update/:id', workoutsController.updateWorkout)
+workoutsRouter.put('/:id', workoutsController.updateWorkout)
 
 
 

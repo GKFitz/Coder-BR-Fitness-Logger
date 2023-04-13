@@ -21,7 +21,7 @@ const Workout = require("../models/workout.js")
     function getAllWorkouts (req, res) {
        Workout.find({})
        .then( function(workout) {
-        res.render('index.ejs', { workouts: workout});
+        res.render('index.ejs', { workout: workout});
        });
        
     
@@ -34,7 +34,7 @@ const Workout = require("../models/workout.js")
     }
     //D
     async function deleteWorkout(req, res) {
-        await Workout.findByIdAndDelete(req.params.id)
+        await Workout.findByIdAndRemove(req.params.id)
         res.redirect("/workouts");
        
     }
@@ -42,7 +42,7 @@ const Workout = require("../models/workout.js")
    //U
    async function updateWorkout (req, res) {
         await Workout.findByIdAndUpdate(req.params.id, req.body)
-        res.redirect('/workouts');
+        res.render("show.ejs");
     }
     
     //C
@@ -76,8 +76,9 @@ const Workout = require("../models/workout.js")
     
     //E for edit
     async function editWorkout (req, res) {
-        await Workout.findById(req.params.id)
-        res.render("edit.ejs", { workout: editWorkout})
+        console.log(req.params.id)
+        const workout = await Workout.findById(req.params.id)
+        res.render("edit.ejs", { workout: workout})
         
     }
 

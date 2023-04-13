@@ -24,9 +24,9 @@
     <main>
         <h2></h2>
         <ul>
-            <% for(let i =0; i < workouts.length; i++){ %>
+            <% for(let i =0; i < workout.length; i++){ %>
                 <li>
-                    <a href="/workouts/<%= workouts[i]._id%>"><%= workouts[i].type %></a>
+                    <a href="/workouts/<%= workout[i]._id%>"><%= workout[i].type %></a>
                 </li>
             <% } %>
         </ul>
