@@ -42,7 +42,7 @@ const Workout = require("../models/workout.js")
    //U
    async function updateWorkout (req, res) {
         await Workout.findByIdAndUpdate(req.params.id, req.body)
-        res.render("show.ejs");
+        res.redirect("/workouts")
     }
     
     //C
