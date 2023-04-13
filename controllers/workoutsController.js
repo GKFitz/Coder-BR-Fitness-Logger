@@ -41,13 +41,14 @@ const Workout = require("../models/workout.js")
 
    //U
    async function updateWorkout (req, res) {
-        await Workout.findByIdAndUpdate({_id: req.params.id},req.body)
+        await Workout.findByIdAndUpdate(req.params.id, req.body)
         res.redirect('/workouts');
     }
     
     //C
     //post route to create a new workout
     function createWorkout (req,res) {
+        console.log(req.body)
         Workout.create(req.body)
         .then(res.redirect('/workouts'));
             
@@ -82,8 +83,8 @@ const Workout = require("../models/workout.js")
 
     //S show 
     async function showWorkout(req, res) {
-        await Workout.findById(req.params.id).exec()
-        res.render("show.ejs", { workout: showWorkout})
+        const workout = await Workout.findById(req.params.id).exec()
+        res.render("show.ejs", { workout: workout})
           
         
     }
