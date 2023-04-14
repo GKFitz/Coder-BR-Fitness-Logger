@@ -1,12 +1,8 @@
 // const db = require("../models");
 const Workout = require("../models/workout.js")
+const User = require("../models/user.js")
 
-// const express = require('express');
-// const mongoose = require('mongoose')
-// const workoutRouter = express.Router();
-// const Workout = require('../models/workout.js');
 
-// const workoutArr = require('../workoutArr')
 
 //pathing to the seed route workout array
 // router.get('../workoutArr.js/', async (req, res) => {
@@ -23,10 +19,11 @@ const Workout = require("../models/workout.js")
        .then( function(workout) {
         res.render('index.ejs', { workout: workout});
        });
-       
-    
     }
     
+
+
+
     //N 
     //localhost:3000/api/workouts/new
     function newWorkout (req, res) {
@@ -46,13 +43,15 @@ const Workout = require("../models/workout.js")
     }
     
     //C
-    //post route to create a new workout
+    // //post route to create a new workout
     function createWorkout (req,res) {
         console.log(req.body)
         Workout.create(req.body)
         .then(res.redirect('/workouts'));
             
     }
+    
+   
     // const createdWorkout = new Workout(req.body)
     // console.log(req.body)
     //   console.log("attempting create workout in db")
