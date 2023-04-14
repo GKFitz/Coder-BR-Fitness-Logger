@@ -14,14 +14,17 @@ const User = require("../models/user.js")
 
     //Index 
     //Get all route
-    function getAllWorkouts (req, res) {
-       Workout.find({})
-       .then( function(workout) {
-        res.render('index.ejs', { workout: workout});
-       });
+    async function getAllWorkouts (req, res) {
+       await Workout.find({})
+       res.render('index.ejs', { workout: workout});
     }
     
-
+    // function getAllWorkouts (req, res) {
+    //     Workout.find({})
+    //     .then( function(workout) {
+    //      res.render('index.ejs', { workout: workout});
+    //     });
+    // }
 
 
     //N 
