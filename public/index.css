@@ -1,0 +1,23 @@
+.card * {
+    box-sizing: border-box;
+}
+
+.card {
+
+    margin: 0 auto;
+    max-width: 1000px;
+    display: inline block;
+    grid-template-columns: repeat(auto-fill, 18rem);
+    grid-auto-rows: auto;
+    gap: 20px;
+    font-family: sans-serif;
+    padding-top: 30px;
+}
+.cardbox{
+    display: inline Block;
+    object-fit: fill;
+}
+.card-body a{
+    justify-content: center;
+    text-align: center;
+}

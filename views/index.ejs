@@ -8,7 +8,7 @@
     <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap-theme.min.css"> -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
-    <link rel="stylesheet" href="./public/index.css" />
+    <link rel="stylesheet" href="/index.css" />
 </head>
 <body>
     <header>
@@ -18,6 +18,9 @@
                 
                 <li>
                     <a href="/">Home</a>
+                </li>
+                <li>
+                    <a href="/workouts/new">Add Your Workout!</a>
                 </li>
                 <li>
                     <form action="/?_method=DELETE" method="POST">
@@ -31,27 +34,32 @@
     </header>
     <main>
         
-        <div class="row row-cols-1 row-cols-md-2 g-4">
-            <% for(let i =0; i < workout.length; i++){ %>
-            <div class="col">
+    <div class="card">
+        <div class="col-12 col-md-4">
+            <!-- <div class="row row-cols-1 row-cols-md-2 g-4"> -->
+                <% for(let i =0; i < workout.length; i++){ %>
+                <div class="col">
                 
-              <div class="card">
-                <img src="..." class="card-img-top" alt="...">
+                <div class="cardbox">
+                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRkVes-s_TZPiohOGXVFX1K7z8pcL31U_jjxpHp8XE8rQ&usqp=CAU&ec=48665698" class="card-img-top" alt="...">
                 
-                <div class="card-body">
+                    <div class="card-body">
                     
 
                     <a href="/workouts/<%= workout[i]._id%>"><%= workout[i].type %></a>
                     
                   
+                    </div>
                 </div>
+                <% } %>
             </div>
-            <% } %>
         </div>
+        <a href="/workouts/new">Add Your Workout!</a>
+    </div>
        
         
     </main>
-    <a href="/workouts/new">Add Your Workout!</a>
+    <!-- <a href="/workouts/new">Add Your Workout!</a> -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe" crossorigin="anonymous"></script>
 </body>
 </html>
