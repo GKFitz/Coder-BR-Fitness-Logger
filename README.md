@@ -1,4 +1,5 @@
 Description
+
 This application is a workout logger that takes in new exercises and uses MongoDB with Mongoose to log them to the database in which can then be conpiled and analyzed in the app's dashboard. This assignment required that the workout model be built for Mongo DB formatting to ensure the correct logging of the various fields in the application. Currently, there is only one type of workout cardio, which takes in different requried fields such as distance and duration.
 
 License
