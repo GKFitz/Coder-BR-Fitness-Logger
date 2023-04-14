@@ -15,7 +15,7 @@ const User = require("../models/user.js")
     //Index 
     //Get all route
     async function getAllWorkouts (req, res) {
-       await Workout.find({})
+       const workout = await Workout.find({})
        res.render('index.ejs', { workout: workout});
     }
     
