@@ -5,7 +5,7 @@ const workoutSchema = new Schema({
   
   type: { 
     type: String, 
-    required: true, 
+    // required: true, 
   },
   duration: { 
     type: String, 
