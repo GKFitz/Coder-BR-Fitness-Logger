@@ -22,8 +22,8 @@ const workoutArr = require('./workoutArr')
 const url = process.env.MONGOGO
 // Database Configuration
 mongoose.connect(url, {
-	useNewUrlParser: true,
-    useUnifiedTopology:true,
+	
+    
 	useFindAndModify: false,
 	useCreateIndex: true,
 });
