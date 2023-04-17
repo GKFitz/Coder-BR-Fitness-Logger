@@ -1,5 +1,6 @@
 const express = require('express')
-const session = require('express-session')
+// const session = require('express-session')
+const session = require('cookie-session');
 const mongoose = require('mongoose')
 const methodOverride= require('method-override')
 const path = require('path')
@@ -45,6 +46,7 @@ app.use('/static', express.static('public'))
 
 app.use(
     session({
+        // secret: 'setyourheartablaze',
         secret: process.env.SECRET,
         resave: false,
         saveUninitialized: false,
