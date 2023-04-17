@@ -18,15 +18,10 @@ const workoutArr = require('./workoutArr')
 
 
 
-// mongoose.connect(process.env.MONGOGO)
-const url = process.env.MONGOGO
+mongoose.connect(process.env.MONGOGO)
+
 // Database Configuration
-mongoose.connect(url, {
-	
-    
-	useFindAndModify: false,
-	useCreateIndex: true,
-});
+
 
 const db = mongoose.connection
 db.on('error', (err) => console.log(err.message + ' is mongo not running?'));
